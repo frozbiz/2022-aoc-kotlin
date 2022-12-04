@@ -33,6 +33,7 @@ fun main() {
             largest_so_far.insert_ordered(current_elf_total, 3)
         }
 
+        println("${num_elves} elves, list_len:${largest_so_far.size}")
         return largest_so_far.take(3)
     }
 
@@ -45,10 +46,8 @@ fun main() {
 //    check(part1(testInput) == 1)
 
     val input = readInput("1-input")
-    println(part1(input))
-    print(part2(input))
-    print(", ")
-    println(part2(input).sum())
-//    print(f"{top_three}, {sum(top_three)}")
-//    print(f"{num_elves} elves, list_len:{len(largest_so_far)}")
+    val ans1 = part1(input)
+    println(ans1)
+    val ans2 = part2(input)
+    println("${ans2}, ${ans2.sum()}")
 }
