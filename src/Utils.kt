@@ -118,3 +118,31 @@ class Point(
         return "Point(${x}, ${y})"
     }
 }
+
+class Grid {
+    operator fun get(x: Int, y: Int): Int {
+        return grid[y]?.get(x) ?: 0
+    }
+
+    operator fun set(x: Int, y: Int, value: Int) {
+        grid.getOrPut(y) { mutableMapOf() }[x] = value
+    }
+
+    operator fun get(point: Point): Int {
+        return get(point.x, point.y)
+    }
+
+    operator fun set(point: Point, value: Int) {
+        set(point.x, point.y, value)
+    }
+
+    val grid = mutableMapOf<Int, MutableMap<Int, Int>>()
+
+    override fun toString(): String {
+        return grid.toString()
+    }
+
+    fun allPoints(): List<Pair<Pair<Int, Int>, Int>> {
+        return grid.flatMap { (y, dict) -> dict.map { (x, count) -> Pair(Pair(x,y), count) } }
+    }
+}
