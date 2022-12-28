@@ -18,8 +18,8 @@ fun String.md5() = BigInteger(1, MessageDigest.getInstance("MD5").digest(toByteA
 
 /// Multipurpose point class
 class Point(
-    val x:Int,
-    val y:Int
+    val x: Int,
+    val y: Int
 ) {
     enum class Relationship {
         HORIZONTAL, VERTICAL, DIAGONAL, SKEW, EQUAL
@@ -31,6 +31,10 @@ class Point(
         }
         val point = other as? Point
         return point?.x == x && point.y == y
+    }
+
+    operator fun plus(other: Point): Point {
+        return Point(other.x + x, other.y + y)
     }
 
     override fun hashCode(): Int {
