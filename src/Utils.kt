@@ -38,7 +38,7 @@ class Point(
     }
 
     override fun hashCode(): Int {
-        return x + (y shl (Int.SIZE_BITS/2))
+        return x + y.rotateLeft(Int.SIZE_BITS/2)
     }
 
     companion object {
